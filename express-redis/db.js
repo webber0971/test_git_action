@@ -7,7 +7,7 @@ const client = redis.createClient(
 
 client.connect()
   .then(async (res) => {
-    console.log('connected');
+    console.log('connected--');
     // Write your own code here
 
     // Example
