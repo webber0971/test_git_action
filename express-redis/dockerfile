@@ -1,0 +1,17 @@
+FROM node:14
+
+WORKDIR /usr/src/app
+
+# ADD package.json /usr/src/app/package.json
+
+COPY package*.json ./
+
+COPY package-lock*.json ./
+
+RUN npm install
+
+COPY . .
+
+EXPOSE 8080
+
+CMD ["npm", "start"]
