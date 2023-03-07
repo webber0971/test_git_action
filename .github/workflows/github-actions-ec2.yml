@@ -11,15 +11,19 @@ jobs:
   deploy:
     name: Deploy to EC2 on master branch push
     runs-on: ubuntu-latest
-
+    env:
+      SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      REMOTE_HOST: ${{ secrets.HOST_DNS }}
+      REMOTE_USER: ${{ secrets.USERNAME }}
+      TARGET: ${{ secrets.TARGET_DIR }}
     steps:
-      - name: Checkout the files
-        uses: actions/checkout@v3
+      - name: test
+       run: |
+        sudo docker -v
 
-      - name: Deploy to Server 1
-        uses: easingthemes/ssh-deploy@main
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          REMOTE_HOST: ${{ secrets.HOST_DNS }}
-          REMOTE_USER: ${{ secrets.USERNAME }}
-          TARGET: ${{ secrets.TARGET_DIR }}
+#       - name: Checkout the files
+#         uses: actions/checkout@v3
+
+#       - name: Deploy to Server 1
+#         uses: easingthemes/ssh-deploy@main
+        
