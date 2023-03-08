@@ -4,21 +4,71 @@ name: Push-to-EC2
 on:
   push:
     branches:
-      - master
+      - main
+
 
 jobs:
-  deploy:
-    name: Deploy to EC2 on master branch push
-    runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout the files
-        uses: actions/checkout@v2
+    test:
+        name: Run tests
+        runs-on: ubuntu-latest
 
-      - name: Deploy to Server 1
-        uses: easingthemes/ssh-deploy@main
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
-          REMOTE_HOST: ${{ secrets.HOST_DNS }}
-          REMOTE_USER: ${{ secrets.USERNAME }}
-          TARGET: ${{ secrets.TARGET_DIR }}
+        steps:
+          - name: Checkout code
+            uses: actions/checkout@v3
+
+          - uses: actions/setup-node@v3
+            with:
+              node-version: "18"
+              
+          - name: Open Web Client Directory
+            run: |
+              ls 
+
+          - name: Install dependencies
+            working-directory: express-redis/
+            run: |
+              mkdir kkk
+              npm install
+
+          - name: Update package index
+            run: |
+              sudo apt-get update
+
+          - name: active redis server for test
+            run: |
+              sudo apt install redis
+              sudo systemctl start redis.service
+
+          - name: Run tests
+            working-directory: express-redis/
+            run: |
+              sudo npm install --global cross-env
+              npm test
+
+
+
+    deploy:
+      name: Deploy to EC2 on master branch push
+      runs-on: ubuntu-latest
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        REMOTE_HOST: ${{ secrets.HOST_DNS }}
+        REMOTE_USER: ${{ secrets.USERNAME }}
+        TARGET: ${{ secrets.TARGET_DIR }}
+      steps:
+      - name: Git clone the repository
+        uses: actions/checkout@v3
+
+      - name: test docker compose
+        run: |
+          sudo docker -v
+          
+
+
+#       - name: Checkout the files
+#         uses: actions/checkout@v3
+
+#       - name: Deploy to Server 1
+#         uses: easingthemes/ssh-deploy@main
+        
