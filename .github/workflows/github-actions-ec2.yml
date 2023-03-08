@@ -65,7 +65,8 @@ jobs:
             key: ${{ secrets.SSH_PRIVATE_KEY }}
             script: |
               cd ~/home/ubuntu/test_git_action
-              mkdir kle/
+              pwd
+              mkdir kl2/
 #             script: |
 #               cd  /home/ubuntu/test_git_action
 #               mkdir k3
