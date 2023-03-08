@@ -63,6 +63,7 @@ jobs:
       - name: test docker compose
         run: |
           sudo docker -v
+          mkdir lll
           
 
 
