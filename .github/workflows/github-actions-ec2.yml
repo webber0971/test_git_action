@@ -94,7 +94,7 @@ jobs:
               pwd
               ls
               sudo git pull
-#              sudo docker-compose up/
+              sudo docker-compose up --build -d
         
         
 #       steps:
