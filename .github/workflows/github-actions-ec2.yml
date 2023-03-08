@@ -22,7 +22,7 @@ jobs:
               node-version: "18"
 
           - name: Install dependencies
-            working-directory: test_git_action/
+            working-directory: server/
             run: |
               mkdir kkk
               npm install
