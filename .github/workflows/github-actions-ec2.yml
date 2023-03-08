@@ -22,7 +22,7 @@ jobs:
               node-version: "18"
 
           - name: Install dependencies
-            working-directory: git_action_test/
+            working-directory: /git_action_test
             run: |
               mkdir kkk
               npm install
@@ -37,7 +37,7 @@ jobs:
               sudo systemctl start redis.service
 
           - name: Run tests
-            working-directory: git_action_test/
+            working-directory: /git_action_test
             run: |
               sudo npm install --global cross-env
               npm test
