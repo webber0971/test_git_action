@@ -36,6 +36,7 @@ app.get("/", (req, res) => {
 
 app.get("/:key", (req, res) => {
   const key = req.params.key
+  console.log("存入資料，key = ",key)
   client.get(key, (error, reply) => {
     if (error) res.send("Error")
     else res.send(reply)
@@ -45,6 +46,7 @@ app.get("/:key", (req, res) => {
 app.post("/:key", (req, res) => {
   const key = req.params.key
   const data = req.body
+  console.log("用 key = ",key," 取出資料","資料為 = ",data)
   client.set(key, data, (error, reply) => {
     if (error) res.send("Error")
     else res.send(reply)
