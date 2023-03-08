@@ -23,7 +23,7 @@ jobs:
               
           - name: Open Web Client Directory
             run: |
-              ls -la
+              ls 
 
           - name: Install dependencies
             working-directory: server/
