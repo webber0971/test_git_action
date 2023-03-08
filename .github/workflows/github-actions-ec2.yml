@@ -64,6 +64,14 @@ jobs:
         run: |
           sudo docker -v
           mkdir lll
+        
+      - name: test make dir
+        run: |
+          mkdir lll
+          
+      - name: test pwd
+        run: |
+          pwd
           
 
 
