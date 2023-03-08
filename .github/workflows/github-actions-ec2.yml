@@ -57,20 +57,36 @@ jobs:
         REMOTE_USER: ${{ secrets.USERNAME }}
         TARGET: ${{ secrets.TARGET_DIR }}
       steps:
-      - name: Git clone the repository
-        uses: actions/checkout@v3
-
-      - name: test docker compose
-        run: |
-          sudo docker -v
+        - name: Executing remote ssh commands using ssh key
+          uses: appleboy/ssh-action@master
+          with:
+            host: ${{ secrets.HOST_DNS }}
+            username: ${{ secrets.USERNAME }}
+            key: ${{ secrets.SSH_PRIVATE_KEY }}
+            script: |
+              cd ~/home/ubuntu/test_git_action
+              mkdir kle/
         
-      - name: test make dir
-        run: |
-          mkdir lll
+        
+#       steps:
+#       - name: Git clone the repository
+#         uses: actions/checkout@v3
+        
+#       - name: deploy to server
+#         uses: easingthemes/ssh-deploy@main
+#         env:
+
+#       - name: test docker compose
+#         run: |
+#           sudo docker -v
+        
+#       - name: test make dir
+#         run: |
+#           mkdir lll
           
-      - name: test pwd
-        run: |
-          pwd
+#       - name: test pwd
+#         run: |
+#           pwd
           
 
 
