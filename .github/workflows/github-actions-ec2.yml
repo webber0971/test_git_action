@@ -92,6 +92,7 @@ jobs:
             script: |
               cd /home/ubuntu/ggg/test_git_action
               pwd
+              ls
 #              sudo git pull
 #              sudo docker-compose up/
         
