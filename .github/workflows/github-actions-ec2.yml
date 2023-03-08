@@ -8,42 +8,42 @@ on:
 
 jobs:
 
-    test:
-        name: Run tests
-        runs-on: ubuntu-latest
+#     test:
+#         name: Run tests
+#         runs-on: ubuntu-latest
 
-        steps:
-          - name: Checkout code
-            uses: actions/checkout@v3
+#         steps:
+#           - name: Checkout code
+#             uses: actions/checkout@v3
 
-          - uses: actions/setup-node@v3
-            with:
-              node-version: "18"
+#           - uses: actions/setup-node@v3
+#             with:
+#               node-version: "18"
               
-          - name: Open Web Client Directory
-            run: |
-              ls 
+#           - name: Open Web Client Directory
+#             run: |
+#               ls 
 
-          - name: Install dependencies
-            working-directory: express-redis/
-            run: |
-              mkdir kkk
-              npm install
+#           - name: Install dependencies
+#             working-directory: express-redis/
+#             run: |
+#               mkdir kkk
+#               npm install
 
-          - name: Update package index
-            run: |
-              sudo apt-get update
+#           - name: Update package index
+#             run: |
+#               sudo apt-get update
 
-          - name: active redis server for test
-            run: |
-              sudo apt install redis
-              sudo systemctl start redis.service
+#           - name: active redis server for test
+#             run: |
+#               sudo apt install redis
+#               sudo systemctl start redis.service
 
-          - name: Run tests
-            working-directory: express-redis/
-            run: |
-              sudo npm install --global cross-env
-          #     npm test
+#           - name: Run tests
+#             working-directory: express-redis/
+#             run: |
+#               sudo npm install --global cross-env
+#           #     npm test
 
 
 
@@ -61,7 +61,7 @@ jobs:
           with:
             host: ${{ secrets.HOST_DNS }}
             username: ${{ secrets.USERNAME }}
-            ssh.ParsePrivateKey: ${{ secrets.SSH_PRIVATE_KEY }}
+            key: ${{ secrets.SSH_PRIVATE_KEY }}
             script: |
               cd ~/home/ubuntu/test_git_action
               mkdir kle/
