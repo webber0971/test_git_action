@@ -20,6 +20,11 @@ jobs:
           - uses: actions/setup-node@v3
             with:
               node-version: "18"
+              
+          - name: Open Web Client Directory
+            working-directory: src/webclient
+            run: |
+              ls -la
 
           - name: Install dependencies
             working-directory: server/
