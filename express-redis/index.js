@@ -4,12 +4,14 @@ const redis = require('ioredis');
 const port = process.env.PORT || 8080
 const redisUrl= process.env.REDIS_URL
 const seee = process.env.PASS_WORD 
+const test = process.env.PASS_WORD_TEST
 
 const app = express()
 
 app.use(express.text())
 console.log(redisUrl,"---")
 console.log("環境帶入的密碼 = ",seee)
+console.log("常數對照組 = ",test)
 
 const client = redis.createClient({
 //   url: "redis://127.0.0.1:6379"

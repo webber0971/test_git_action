@@ -6,6 +6,10 @@ on:
     branches:
       - main
 
+env:
+  PASS_WORD: "keewww"
+
+
 jobs:
 
 #     test:
@@ -56,7 +60,6 @@ jobs:
         REMOTE_HOST: ${{ secrets.HOST_DNS }}
         REMOTE_USER: ${{ secrets.USERNAME }}
         TARGET: ${{ secrets.TARGET_DIR }}
-        PASS_WORD: "keewww"
       steps:
         - name: Executing remote ssh commands using ssh key
           uses: appleboy/ssh-action@master
@@ -66,8 +69,11 @@ jobs:
             key: ${{ secrets.SSH_PRIVATE_KEY }}
             script: |
               cd /home/ubuntu/test_git_action
-              pwd
-              sudo mkdir kl2/
+              ls
+              sudo git pull 
+              sudo docker container ls -aq
+              sudo docker container rm
+              sudo docker-compose up --build -d
 #             script: |
 #               cd  /home/ubuntu/test_git_action
 #               mkdir k3
