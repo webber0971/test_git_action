@@ -22,9 +22,9 @@ services:
       - redis1
     environment:
       - PASS_WORD= ${PASS_WORD}
-      - PASS_WORD_TEST: TESTff
-      - NODE_ENV: production
-      - REDIS_URL: redis://redis:6379
+      - PASS_WORD_TEST= TESTff
+      - NODE_ENV= production
+      - REDIS_URL= redis://redis:6379
     ports:
       - 8080:8080
   
