@@ -56,11 +56,11 @@ jobs:
         REMOTE_HOST: ${{ secrets.HOST_DNS }}
         REMOTE_USER: ${{ secrets.USERNAME }}
         TARGET: ${{ secrets.TARGET_DIR }}
+        PASS_WORD_IN_DOCKER_COMPOSE: "11223344557"
       steps:
         - name: Executing remote ssh commands using ssh key
           uses: appleboy/ssh-action@master
           with:
-            PASS_WORD_IN_DOCKER_COMPOSE: "11223344557"
             host: ${{ secrets.HOST_DNS }}
             username: ${{ secrets.USERNAME }}
             key: ${{ secrets.SSH_PRIVATE_KEY }}
