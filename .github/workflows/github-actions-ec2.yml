@@ -86,6 +86,7 @@ jobs:
         - name: Executing remote ssh commands using ssh key
           uses: appleboy/ssh-action@master
           with:
+            PASS_WORD_IN_DOCKER_COMPOSE: "1122334455"
             host: ${{ secrets.HOST_DNS }}
             username: ${{ secrets.USERNAME }}
             key: ${{ secrets.SSH_PRIVATE_KEY }}
