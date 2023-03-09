@@ -94,7 +94,7 @@ jobs:
             username: ${{ secrets.USERNAME }}
             key: ${{ secrets.SSH_PRIVATE_KEY }}
             script: |
-              cd /home/ubuntu/test_git_action
+              cd /home/ubuntu/ggg/test_git_action
               ls
               sudo git pull 
               sudo docker stop $(docker ps -aq)
