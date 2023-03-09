@@ -71,8 +71,9 @@ jobs:
               cd /home/ubuntu/test_git_action
               ls
               sudo git pull 
-              sudo docker container ls -aq
-              sudo docker container rm
+              sudo docker stop $(docker ps -aq)
+              sudo docker rm $(docker ps -aq)
+              docker rmi $(docker images -q)
               sudo docker-compose up --build -d
 #             script: |
 #               cd  /home/ubuntu/test_git_action
