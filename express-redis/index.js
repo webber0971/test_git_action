@@ -8,12 +8,12 @@ const app = express()
 
 app.use(express.text())
 console.log(redisUrl,"---")
+console.log("環境帶入的密碼 = ",process.env.PASS_WORD)
 
 const client = redis.createClient({
 //   url: "redis://127.0.0.1:6379"
     // url:redisUrl
     host:"redis1"   //這好的
-
 });
 
 console.log(client.get("bob",(error,reply)=>{
@@ -36,7 +36,7 @@ app.get("/", (req, res) => {
 
 app.get("/:key", (req, res) => {
   const key = req.params.key
-  console.log("存入資料，key = ",key)
+  console.log("用 key = ",key," 取出資料","資料為 = ",data)
   client.get(key, (error, reply) => {
     if (error) res.send("Error")
     else res.send(reply)
@@ -46,7 +46,7 @@ app.get("/:key", (req, res) => {
 app.post("/:key", (req, res) => {
   const key = req.params.key
   const data = req.body
-  console.log("用 key = ",key," 取出資料","資料為 = ",data)
+  console.log("存入資料，key = ",key,"，資料為 = ",data)
   client.set(key, data, (error, reply) => {
     if (error) res.send("Error")
     else res.send(reply)
