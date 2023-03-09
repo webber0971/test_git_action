@@ -3,12 +3,13 @@ const redis = require('ioredis');
 
 const port = process.env.PORT || 8080
 const redisUrl= process.env.REDIS_URL
+const seee = process.env.PASS_WORD || kkll
 
 const app = express()
 
 app.use(express.text())
 console.log(redisUrl,"---")
-console.log("環境帶入的密碼 = ",process.env.PASS_WORD)
+console.log("環境帶入的密碼 = ",seee)
 
 const client = redis.createClient({
 //   url: "redis://127.0.0.1:6379"
