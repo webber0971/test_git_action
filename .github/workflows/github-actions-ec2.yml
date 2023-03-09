@@ -95,14 +95,17 @@ jobs:
             script: |
               cd /home/ubuntu/ggg/test_git_action
               ls
+              pwd
               sudo git pull 
-              sudo docker stop $(docker ps -aq)
-              sudo docker rm $(docker ps -aq)
+              sudo docker-compose down
               sudo docker rmi $(docker images -q)
               sudo docker-compose up --build -d
-#             script: |
-#               cd  /home/ubuntu/test_git_action
-#               mkdir k3
+
+
+
+
+# sudo docker stop $(docker ps -aq)
+# sudo docker rm $(docker ps -aq)
         
         
 #       steps:
