@@ -21,7 +21,7 @@ services:
     depends_on:
       - redis1
     environment:
-      - PASS_WORD= ${PASS_WORD}
+      - PASS_WORD= ${{PASS_WORD}}
       - PASS_WORD_TEST= TESTff
       - NODE_ENV= production
       - REDIS_URL= redis://redis:6379
