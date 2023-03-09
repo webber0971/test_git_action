@@ -3,7 +3,7 @@ const redis = require('ioredis');
 
 const port = process.env.PORT || 8080
 const redisUrl= process.env.REDIS_URL
-const seee = process.env.PASS_WORD || kkll
+const seee = process.env.PASS_WORD || "kkll"
 
 const app = express()
 
